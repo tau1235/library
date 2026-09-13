@@ -8,6 +8,11 @@ template<int mod> struct modint{
     if (x_<0) x_+=mod;
     x=(int)x_;
   }
+  static modint raw(int x_){
+    modint ret;
+    ret.x=x_;
+    return ret;
+  }
   int val()const{return x;}
   modint& operator+=(const modint &r){
     x+=r.x;
@@ -50,7 +55,16 @@ template<int mod> struct modint{
   } 
   friend bool operator==(const modint &l,const modint &r){return l.x==r.x;}
   friend bool operator!=(const modint &l,const modint &r){return l.x!=r.x;}
-  modint inv()const{return this->pow(mod-2);}
+  modint inv()const{
+    int a=mod,b=x,u=0,v=1;
+    while (b){
+      int q=a/b;
+      swap(a-=q*b,b);
+      swap(u-=q*v,v);
+    }
+    if (u<0) u+=mod;
+    return modint::raw(u);
+  }
   modint pow(unsigned long long k)const{
     modint ret=1,pw=*this;
     while (k){
