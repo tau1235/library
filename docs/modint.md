@@ -8,13 +8,17 @@ mod を取ってくれる
 実装の話などはこっちに[https://tau1235.hatenablog.com/entry/2026/09/16/235428](https://tau1235.hatenablog.com/entry/2026/09/16/235428)
 
 ## val
-`int val()`
+```cpp
+int val()
+```
 
 管理している値の $\bmod M$ の値である $x\ (0\le x\lt M)$ を返す。
 
 
 ## pow
-`modint pow(unsigned long long k)`
+```cpp
+modint pow(unsigned long long k)
+```
 
 $x^k\bmod M$ を modint 型で返す。
 
@@ -26,7 +30,9 @@ $x^k\bmod M$ を modint 型で返す。
 
 
 ## inv
-`modint inv()`
+```cpp
+modint inv()
+```
 
 $x\times x^{-1}\equiv 1\bmod M$ であるような $x^{-1}\bmod M$ を modint 型で返す。  
 
@@ -39,7 +45,9 @@ $x\times x^{-1}\equiv 1\bmod M$ であるような $x^{-1}\bmod M$ を modint �
 
 
 ## raw
-`modint raw(int x_)`
+```cpp
+modint raw(int x_)
+```
 
 そのまま `modint(100)` のようにして初期化する際、値を $\bmod M$ で剰余を取るという操作を行うが、`modint::raw(100)` のようにすることで剰余を取らずに初期化する。
 
@@ -48,7 +56,7 @@ $x\times x^{-1}\equiv 1\bmod M$ であるような $x^{-1}\bmod M$ を modint �
 
 
 ## 演算
-```
+```cpp
 +x
 -x
 
@@ -75,7 +83,7 @@ x!=y
 
 
 ## 入出力
-```
+```cpp
 moint x;
 cin>>x;
 cout<<x;

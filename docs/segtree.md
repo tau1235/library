@@ -9,7 +9,7 @@ documentation_of: segtree.hpp
 管理する列を $a$ とする。
 
 ## コンストラクタ
-```
+```cpp
 (1) SegTree<S,op,e>(int n)
 (2) SegTree<S,op,e>(vector<S> v)
 ```
@@ -27,7 +27,9 @@ documentation_of: segtree.hpp
 
 
 ## set
-`void set(int x,S val)`
+```cpp
+void set(int x,S val)
+```
 
 $a_x=val$ として更新する。
 
@@ -39,7 +41,9 @@ $a_x=val$ として更新する。
 
 
 ## get
-`S get(int x)`
+```cpp
+S get(int x)
+```
 
 $a_x$ を返す。
 
@@ -51,7 +55,9 @@ $a_x$ を返す。
 
 
 ## prod
-`S prod(int l,int r)`
+```cpp
+S prod(int l,int r)
+```
 
 $a_l,a_{l+1},\dots,a_{r-1}$ の総積 $op(a_l,a_{l+1},\dots,a_{r-1})$ を返す。
 
@@ -63,7 +69,9 @@ $a_l,a_{l+1},\dots,a_{r-1}$ の総積 $op(a_l,a_{l+1},\dots,a_{r-1})$ を返す�
 
 
 ## max_right
-`int max_right<f>(int l=0)`
+```cpp
+int max_right<f>(int l=0)
+```
 
 セグ木上の二分探索をする。  
 
