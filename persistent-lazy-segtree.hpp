@@ -70,6 +70,7 @@ struct PersistentLazySegmentTree{
     Node* root=copy_range(clone(roots[to]),roots[from],0,n,l,r,id());
     roots.push_back(root);
   }
+  int prev(){return (int)roots.size()-1;}
   void reset(){pid=0;}
 private:
   Node* newNode(){
