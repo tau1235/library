@@ -1,6 +1,4 @@
-#pragma once
-
-template<typename S,S (*op)(S,S),S (*e)(),typename F,S (*mapping)(F,S),F (*composition)(F,F),F (*id)()>
+template<typename S,S (*op)(S,S),S (*e)(),typename F,S (*mapping)(F,S),F (*composition)(F,F),F (*id)(),int NODES=(int)1e7>
 struct PersistentLazySegmentTree{
   using ll=long long;
   ll n,n2;
@@ -9,17 +7,17 @@ struct PersistentLazySegmentTree{
     F lazy;
     bool has_lazy;
     Node *l,*r;
-    Node():val(e()),lazy(id()),has_lazy(false),l(nullptr),r(nullptr){}
+    Node(){}
   };
   vector<Node*> roots;
-  inline static const int NODES=1e7;
-  inline static Node pool[NODES];
-  inline static int pid;
+  Node *pool;
+  int pid;
   PersistentLazySegmentTree(ll n_){
     n2=n_;
     int log=0;
     while (1LL<<log<n2) log++;
     n=1LL<<log;
+    pool=new Node[NODES];
     pid=0;
     Node* root=newNode();
     roots.push_back(root);
@@ -63,6 +61,24 @@ struct PersistentLazySegmentTree{
     roots.push_back(root);
   }
   void apply(ll l,ll r,F f){apply((int)roots.size()-1,l,r,f);}
+  template<bool (*g)(S)> ll max_right(int t,ll l){
+    assert(0<=t&&t<(int)roots.size());
+    assert(0<=l&&l<n2);
+    assert(g(e()));
+    S p=e();
+    F lazy=id();
+    return min(max_right<g>(roots[t],0,n,l,p,lazy),n2);
+  }
+  template<bool (*g)(S)> ll max_right(ll l){return max_right<g>((int)roots.size()-1,l);}
+  template<bool (*g)(S,S)> ll max_right_pair(int t1,int t2,ll l){
+    assert(0<=t1&&t1<(int)roots.size());
+    assert(0<=t2&&t2<(int)roots.size());
+    assert(0<=l&&l<n2);
+    assert(g(e(),e()));
+    S p1=e(),p2=e();
+    F lazy1=id(),lazy2=id();
+    return min(max_right_pair<g>(roots[t1],roots[t2],0,n,l,p1,p2,lazy1,lazy2),n2);
+  }
   void copy_range(int to,int from,ll l,ll r){
     assert(0<=l&&l<=r&&r<=n2);
     assert(0<=to&&to<(int)roots.size());
@@ -97,7 +113,7 @@ private:
     ret->l=t->l;ret->r=t->r;
     return ret;
   }
-  Node* merge(Node* l,Node* r){return newNode(op(l->val,r->val),id(),false,l,r);}
+  Node* merge(Node* l,Node* r){return newNode(op(l?l->val:e(),r?r->val:e()),id(),false,l,r);}
   Node* all_apply(Node* t,F f){
     t=t?clone(t):newNode();
     t->val=mapping(f,t->val);
@@ -117,7 +133,7 @@ private:
     if (!(l<=p&&p<r)) return t;
     if (r-l==1) return newNode(x,id(),false);
     ll mid=(l+r)/2;
-    t=t?clone(t):newNode();
+    t=clone(t);
     push(t);
     return merge(set(t->l,p,x,l,mid),set(t->r,p,x,mid,r));
   }
@@ -137,16 +153,47 @@ private:
     push(t);
     return merge(apply(t->l,l,mid,a,b,f),apply(t->r,mid,r,a,b,f));
   }
+  template<bool (*g)(S)> ll max_right(Node* t,ll l,ll r,ll ql,S &p,F lazy){
+    if (r<=ql) return r;
+    if (ql<=l&&g(mapping(lazy,op(p,t->val)))){
+      p=mapping(lazy,op(p,t->val));
+      return r;
+    }
+    if (r-l==1) return l;
+    ll mid=(l+r)/2;
+    lazy=composition(lazy,t->lazy);
+    if (!t->l) t->l=newNode();
+    ll k=max_right<g>(t->l,l,mid,ql,p,lazy);
+    if (k!=mid) return k;
+    if (!t->r) t->r=newNode();
+    return max_right<g>(t->r,mid,r,ql,p,lazy);
+  }
+  template<bool (*g)(S,S)> ll max_right_pair(Node* t1,Node* t2,ll l,ll r,ll ql,S &p1,S &p2,F lazy1,F lazy2){
+    if (r<=ql) return r;
+    if (ql<=l&&g(mapping(lazy1,op(p1,t1->val)),mapping(lazy2,op(p2,t2->val)))){
+      p1=mapping(lazy1,op(p1,t1->val));
+      p2=mapping(lazy2,op(p2,t2->val));
+      return r;
+    }
+    if (r-l==1) return l;
+    ll mid=(l+r)/2;
+    lazy1=composition(lazy1,t1->lazy);
+    lazy2=composition(lazy2,t2->lazy);
+    if (!t1->l) t1->l=newNode();
+    if (!t2->l) t2->l=newNode();
+    ll k=max_right_pair<g>(t1->l,t2->l,l,mid,ql,p1,p2,lazy1,lazy2);
+    if (k!=mid) return k;
+    if (!t1->r) t1->r=newNode();
+    if (!t2->r) t2->r=newNode();
+    return max_right_pair<g>(t1->r,t2->r,mid,r,ql,p1,p2,lazy1,lazy2);
+  }
   Node* copy_range(Node* to,Node* from,ll l,ll r,ll a,ll b,F lazy){
     if (b<=l||r<=a) return to;
-    if (a<=l&&r<=b){
-      from=from?clone(from):newNode();
-      return all_apply(from,lazy);
-    }
+    if (a<=l&&r<=b) return all_apply(from,lazy);
     ll mid=(l+r)/2;
-    push(to);
+    if (to) push(to);
     if (from) lazy=composition(lazy,from->lazy);
-    return merge(copy_range(to->l,(from&&from->l)?from->l:nullptr,l,mid,a,b,lazy),
-                 copy_range(to->r,(from&&from->r)?from->r:nullptr,mid,r,a,b,lazy));
+    return merge(copy_range(to?to->l:nullptr,(from&&from->l)?from->l:nullptr,l,mid,a,b,lazy),
+                 copy_range(to?to->r:nullptr,(from&&from->r)?from->r:nullptr,mid,r,a,b,lazy));
   }
 };
