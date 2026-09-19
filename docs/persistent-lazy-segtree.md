@@ -132,3 +132,7 @@ void reset()
 
 `PersistentLazySegmentTree` によって作成した Node 数が `NODES`($10^7$ としている) を超えた場合、壊れる。  
 この関数を呼ぶことで今まで作成した Node をすべて削除(実際には削除しないが)し、初期化する。マルチテストケースとかのケース間で使う場合などを想定している。
+
+
+## 参考
+[https://info.atcoder.jp/entry/algorithm_lectures/persistent_segment_tree](https://info.atcoder.jp/entry/algorithm_lectures/persistent_segment_tree)

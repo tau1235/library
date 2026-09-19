@@ -76,11 +76,11 @@ int max_right<f>(int l=0)
 セグ木上の二分探索をする。  
 
 `bool f(S x)` を渡す必要がある。  
-$f(a_l),f(a_{l+1}),\dots$ が単調だとしたとき、はじめて `false` となるのを $f(a_r)$ としたとき、 $r$ を返す。もし $f(a_{n-1})$ が `true` なら $r=n$ を返す。
+$l$ を固定したときの $f(op(a\lbrack l,r)))\ (l\le r)$ が単調だとしたとき、`true` となる最大の $r\ (\ge l)$ を返す。$f(op(a\lbrack l,l)))=f(e())$ が `true` であることを必要とするので、$r$ は必ず存在する。
 
 ## 制約
-- $f$ は $a_l,a_{l+1},\dots$ について単調  
-言い換えれば、$f(a_i)$ が `false` ならば $f(a_j)\ (i<j)$ も `false`
+- $f$ は $l$ を固定したときの $r$ について $f(op(a\lbrack l,r)))$ が単調  
+言い換えれば、$f(op(a\lbrack l,r)))$ が `false` ならば $f(op(a\lbrack l,r+1)))$ も `false`
 - $f(e())$ は `true`
 - $0\le l\le n$
 
