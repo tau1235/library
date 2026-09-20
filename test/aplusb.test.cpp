@@ -3,7 +3,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#include"aplusb.hpp"
+#include"other/aplusb.hpp"
 
 int main(){
   int a,b;
