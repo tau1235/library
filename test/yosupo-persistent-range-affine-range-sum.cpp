@@ -3,8 +3,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#include"persistent-lazy-segtree.hpp"
-#include"modint.hpp"
+#include"data-structure/persistent-lazy-segtree.hpp"
+#include"modint/modint.hpp"
 
 using ll=long long;
 
