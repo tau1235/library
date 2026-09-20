@@ -1,10 +1,12 @@
 // competitive-verifier: PROBLEM https://judge.yosupo.jp/problem/aplusb
 
 #include<bits/stdc++.h>
-#include "aplusb.hpp"
+using namespace std;
+
+#include"aplusb.hpp"
 
 int main(){
   int a,b;
-  std::cin>>a>>b;
-  std::cout<<aplusb(a,b)<<std::endl;
+  cin>>a>>b;
+  cout<<aplusb(a,b)<<endl;
 }

@@ -2,8 +2,9 @@
 
 #include<bits/stdc++.h>
 using namespace std;
-#include"modint.hpp"
-#include"splaytree.hpp"
+
+#include"modint/modint.hpp"
+#include"data-structure/splaytree.hpp"
 
 struct S{
   mint val;

@@ -2,7 +2,8 @@
 
 #include<bits/stdc++.h>
 using namespace std;
-#include"li-chao-tree.hpp"
+
+#include"data-structure/li-chao-tree.hpp"
 
 using ll=long long;
 ll inf=5e18;

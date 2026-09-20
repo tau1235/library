@@ -3,7 +3,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#include"persistent-lazy-segtree.hpp"
+#include"data-structure/persistent-lazy-segtree.hpp"
 
 int op(int a,int b){return a+b;}
 int e(){return 0;}

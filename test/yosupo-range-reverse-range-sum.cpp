@@ -2,7 +2,8 @@
 
 #include<bits/stdc++.h>
 using namespace std;
-#include"splaytree.hpp"
+
+#include"data-structure/splaytree.hpp"
 
 using ll=long long;
 ll op(ll a,ll b){return a+b;}
