@@ -8,6 +8,7 @@ using namespace std;
 #include"modint/modint.hpp"
 
 using ll=long long;
+using mint=modint998244353;
 
 struct S{mint val,siz;};
 S op(S a, S b){return S{a.val+b.val,a.siz+b.siz};}

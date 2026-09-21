@@ -7,6 +7,8 @@ using namespace std;
 #include"modint/modint.hpp"
 #include"data-structure/splaytree.hpp"
 
+using mint=modint998244353;
+
 struct S{
   mint val;
   mint sz;

@@ -8,6 +8,8 @@ using namespace std;
 #include"data-structure/segtree.hpp"
 #include"tree/heavy-light-decomposition.hpp"
 
+using mint=modint998244353;
+
 struct S{mint a,b;};
 S op1(S a,S b){return {b.a*a.a,b.a*a.b+b.b};}
 S op2(S a,S b){return op1(b,a);}

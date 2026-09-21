@@ -81,4 +81,6 @@ template<int mod> struct modint{
     return is;
   }
   friend ostream &operator<<(ostream &os,const modint &p){return os<<p.x;}
-}; using mint=modint<998244353>;
+};
+using modint998244353=modint<998244353>;
+using modint1000000007=modint<1000000007>;
