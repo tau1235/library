@@ -3,11 +3,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#include"other/io.hpp"
 #include"tree/heavy-light-decomposition.hpp"
 
 int main(){
-  iostream::sync_with_stdio(false);
-  cin.tie(nullptr);
   int n,q;
   cin>>n>>q;
   HeavyLightDecomposition g(n);

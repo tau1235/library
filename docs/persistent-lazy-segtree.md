@@ -1,6 +1,6 @@
 ---
 title: 永続遅延セグメント木
-documentation_of: persistent-lazy-segtree.hpp
+documentation_of: data-structure/persistent-lazy-segtree.hpp
 ---
 
 動的遅延セグメント木を永続化したもの。  

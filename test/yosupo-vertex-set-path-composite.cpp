@@ -3,6 +3,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#include"other/io.hpp"
 #include"modint/modint.hpp"
 #include"data-structure/segtree.hpp"
 #include"tree/heavy-light-decomposition.hpp"
@@ -50,7 +51,7 @@ int main(){
         else p=op1(p,seg2.prod(r,l));
       });
       mint ans=p.a*x+p.b;
-      cout<<ans.val()<<endl;
+      cout<<ans.val()<<"\n";
     }
   }
 }

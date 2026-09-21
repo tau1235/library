@@ -3,6 +3,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#include"other/io.hpp"
 #include"data-structure/persistent-lazy-segtree.hpp"
 
 int op(int a,int b){return a+b;}
@@ -28,7 +29,7 @@ int main(){
     cin>>l>>r>>k;
     b=k;
     int ans=seg.max_right_pair<g>(l,r,0);
-    cout<<ans<<endl;
+    cout<<ans<<"\n";
   }
   cerr<<seg.pid<<endl;
 }

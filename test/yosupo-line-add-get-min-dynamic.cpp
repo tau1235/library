@@ -3,6 +3,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#include"other/io.hpp"
 #include"data-structure/dynamic-li-chao-tree.hpp"
 
 using ll=long long;
@@ -30,7 +31,7 @@ int main(){
     if (t==1){
       ll p;
       cin>>p;
-      cout<<lct.query(p)<<endl;
+      cout<<lct.query(p)<<"\n";
     }
   }
 }

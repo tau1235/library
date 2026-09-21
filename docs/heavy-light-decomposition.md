@@ -1,6 +1,6 @@
 ---
 title: HLD
-documentation_of: heavy-light-decomposition.hpp
+documentation_of: tree/heavy-light-decomposition.hpp
 ---
 
 Heavy Light Decomposition、HLD、HL分解、重軽分解など言い方が多い。

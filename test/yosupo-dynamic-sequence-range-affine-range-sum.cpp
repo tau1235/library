@@ -3,6 +3,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#include"other/io.hpp"
 #include"modint/modint.hpp"
 #include"data-structure/splaytree.hpp"
 
@@ -18,8 +19,6 @@ F composition(F f,F g){return {f.b*g.b,f.b*g.c+f.c};}
 F id(){return {1,0};}
 
 int main(){
-  ios_base::sync_with_stdio(false);
-  cin.tie(nullptr);
   int n,q;
   cin>>n>>q;
   vector<S> v(n);

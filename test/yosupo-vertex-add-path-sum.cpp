@@ -3,6 +3,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#include"other/io.hpp"
 #include"data-structure/segtree.hpp"
 #include"tree/heavy-light-decomposition.hpp"
 
@@ -40,7 +41,7 @@ int main(){
       g.path_query(u,v,[&](int l,int r){
         ans+=seg.prod(l,r);
       });
-      cout<<ans<<endl;
+      cout<<ans<<"\n";
     }
   }
 }

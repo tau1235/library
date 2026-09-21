@@ -3,6 +3,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#include"other/io.hpp"
 #include"data-structure/persistent-unionfind.hpp"
 
 int main(){
@@ -19,8 +20,8 @@ int main(){
       t[i+1]=uf.prev();
     }
     if (type==1){
-      if (uf.same(t[k],u,v)) cout<<1<<endl;
-      else cout<<0<<endl;
+      if (uf.same(t[k],u,v)) cout<<1<<"\n";
+      else cout<<0<<"\n";
     }
   }
 }

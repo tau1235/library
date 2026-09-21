@@ -3,6 +3,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#include"other/io.hpp"
 #include"data-structure/li-chao-tree.hpp"
 
 using ll=long long;
@@ -39,7 +40,7 @@ int main(){
     if (t==0) lct.add(a,b);
     if (t==1){
       ll ans=lct.query(a);
-      cout<<ans<<endl;
+      cout<<ans<<"\n";
     }
   }
 }

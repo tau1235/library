@@ -1,6 +1,6 @@
 ---
 title: modint
-documentation_of: modint.hpp
+documentation_of: modint/modint.hpp
 ---
 
 mod を取ってくれる

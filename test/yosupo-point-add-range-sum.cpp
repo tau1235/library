@@ -3,6 +3,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#include"other/io.hpp"
 #include"data-structure/segtree.hpp"
 
 using ll=long long;
@@ -29,7 +30,7 @@ int main(){
 		if (t==1){
 			int l,r;
 			cin>>l>>r;
-			cout<<seg.prod(l,r)<<endl;
+			cout<<seg.prod(l,r)<<"\n";
 		}
 	}
 }

@@ -1,6 +1,6 @@
 ---
 title: 永続セグメント木
-documentation_of: persistent-segtree.hpp
+documentation_of: data-structure/persistent-segtree.hpp
 ---
 
 動的セグメント木を永続化したもの。  

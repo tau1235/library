@@ -1,6 +1,6 @@
 ---
 title: Segment Tree
-documentation_of: segtree.hpp
+documentation_of: data-structure/segtree.hpp
 ---
 
 抽象化セグメント木  

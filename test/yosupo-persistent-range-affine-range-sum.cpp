@@ -3,6 +3,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#include"other/io.hpp"
 #include"data-structure/persistent-lazy-segtree.hpp"
 #include"modint/modint.hpp"
 
@@ -50,7 +51,7 @@ int main(){
       cin>>k>>l>>r;
       k++;
       S ans=seg.prod(t[k],l,r);
-      cout<<ans.val.val()<<endl;
+      cout<<ans.val.val()<<"\n";
     }
   }
   cerr<<seg.pid<<endl;

@@ -1,6 +1,6 @@
 ---
 title: A+B
-documentation_of: aplusb.hpp
+documentation_of: other/aplusb.hpp
 ---
 
 ## 説明

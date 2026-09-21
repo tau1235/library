@@ -3,6 +3,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#include"other/io.hpp"
 #include"data-structure/splaytree.hpp"
 
 using ll=long long;
@@ -28,7 +29,7 @@ int main(){
     if (t==0) st.reverse(l,r);
     if (t==1){
       ll ans=st.prod(l,r);
-      cout<<ans<<endl;
+      cout<<ans<<"\n";
     }
   }
 }
