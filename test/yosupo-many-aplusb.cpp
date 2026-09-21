@@ -12,6 +12,6 @@ int main(){
   while (t--){
     long long a,b;
     cin>>a>>b;
-    cout<<aplusb(a,b)<<"\n";
+    cout<<a+b<<"\n";
   }
 }
