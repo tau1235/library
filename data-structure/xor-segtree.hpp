@@ -3,12 +3,12 @@
 template<typename S,S (*op)(S,S),S (*e)(),int NODES=(int)1e7>
 struct XorSegmentTree{
   using ll=long long;
-	struct Node{
-		Node* next[2];
-		S val;
-		Node(){}
-	};
-	Node *root;
+  struct Node{
+    Node* next[2];
+    S val;
+    Node(){}
+  };
+  Node *root;
   ll xorval;
   int pid;
   Node *pool;
