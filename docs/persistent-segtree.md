@@ -160,7 +160,7 @@ int prev()
 void reset()
 ```
 
-`PersistentSegmentTree` によって作成した Node 数が `NODES`($10^7$ としている) を超えた場合、壊れる。  
+`PersistentSegmentTree` によって作成した Node 数が `NODES`( 初期値を $2\times10^7$ としている ) を超えた場合、壊れる。  
 この関数を呼ぶことで今まで作成した Node をすべて削除(実際には削除しないが)し、初期化する。マルチテストケースとかのケース間で使う場合などを想定している。
 
 

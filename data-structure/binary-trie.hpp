@@ -2,23 +2,23 @@
 
 template<int LOG,typename T,typename S=int,int NODES=(int)1e7>
 struct BinaryTrie{
-	struct Node{
-		Node* next[2];
-		S cnt;
-		Node(){}
-	};
-	Node *root;
+  struct Node{
+    Node* next[2];
+    S cnt;
+    Node(){}
+  };
+  Node *root;
   T lazy;
   Node *pool;
   int pid;
-	BinaryTrie(){
+  BinaryTrie(){
     pool=new Node[NODES];
     pid=0;
-		root=newNode();
+    root=newNode();
     lazy=0;
-	}
-	void add(const T &x,S cnt=1){root=add(root,x,cnt,0);}
-	void erase(const T &x,S cnt=1){root=add(root,x,-cnt,0);}
+  }
+  void add(const T &x,S cnt=1){root=add(root,x,cnt,0);}
+  void erase(const T &x,S cnt=1){root=add(root,x,-cnt,0);}
   T get_kth(S k){
     assert(0<=k&&k<root->cnt);
     return get_kth(root,k,0);

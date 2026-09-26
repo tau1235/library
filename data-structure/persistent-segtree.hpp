@@ -1,6 +1,6 @@
 #pragma once
 
-template<typename S,S (*op)(S,S),S (*e)(),int NODES=(int)1e7>
+template<typename S,S (*op)(S,S),S (*e)(),int NODES=(int)2e7>
 struct PersistentSegmentTree{
   using ll=long long;
   ll n,n2;

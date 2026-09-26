@@ -1,4 +1,4 @@
-template<typename S,S (*op)(S,S),S (*e)(),typename F,S (*mapping)(F,S),F (*composition)(F,F),F (*id)(),int NODES=(int)1e7>
+template<typename S,S (*op)(S,S),S (*e)(),typename F,S (*mapping)(F,S),F (*composition)(F,F),F (*id)(),int NODES=(int)2e7>
 struct PersistentLazySegmentTree{
   using ll=long long;
   ll n,n2;
