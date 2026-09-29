@@ -73,7 +73,8 @@ jobs:
            "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"]
     steps:
       - uses: actions/checkout@v4
-
+        with:
+          fetch-depth: 2147483647
       - name: Restore cached results
         id: restore-cached-results
         uses: actions/cache/restore@v4
