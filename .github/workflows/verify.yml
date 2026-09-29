@@ -99,6 +99,8 @@ jobs:
           split-index: ${{ matrix.index }}
           timeout: 1800
           prev-result: ${{ hashFiles('merged-result.json') != '' && 'merged-result.json' || '' }}
+        env:
+          YUKICODER_TOKEN: ${{secrets.YUKICODER_TOKEN}}
 
       - name: Upload result artifact
         uses: actions/upload-artifact@v7
