@@ -1,19 +1,33 @@
 #pragma once
 
 template<typename S,S (*op)(S,S),S (*e)()>
-struct XorSegmentTreeStatic{
+struct XorSegmentTreeNonCommutative{
   int n,log;
+  int m;
   int xorval;
   vector<vector<S>> table;
-  XorSegmentTreeStatic(vector<S> v){
+  XorSegmentTreeNonCommutative(int n){
+    *this=XorSegmentTreeNonCommutative(vector<S>(n,e()));
+  }
+  XorSegmentTreeNonCommutative(vector<S> v){
     n=v.size();
     log=0;
     while (1<<log<n) log++;
     assert(n==1<<log);
+    m=log/2;
     xorval=0;
-    table=vector(log+1,vector<S>(n));
+    table=vector(m+1,vector<S>(n));
     table[0]=v;
-    for (int h=1;h<=log;h++) for (int i=0;i<n>>h;i++) update(h,i);
+    for (int h=1;h<=m;h++) for (int i=0;i<n>>h;i++) update(h,i);
+  }
+  void set(int p,S x){
+    assert(0<=p&&p<n);
+    p^=xorval;
+    table[0][p]=x;
+    for (int h=1;h<=m;h++){
+      p/=2;
+      update(h,p);
+    }
   }
   S get(int p){
     assert(0<=p&&p<n);
@@ -29,7 +43,7 @@ struct XorSegmentTreeStatic{
   }
 private:
   void update(int h,int p){
-    assert(1<=h&&h<=log);
+    assert(1<=h&&h<=m);
     assert(0<=p&&p<n);
     int l=p<<h;
     int hl=1<<(h-1);
@@ -40,7 +54,7 @@ private:
   }
   S prod(int l,int r,int ql,int qr,int h){
     if (qr<=l||r<=ql) return e();
-    if (ql<=l&&r<=qr) return table[h][l^xorval];
+    if (ql<=l&&r<=qr&&h<=m) return table[h][l^xorval];
     int mid=(l+r)/2;
     return op(prod(l,mid,ql,qr,h-1),prod(mid,r,ql,qr,h-1));
   }
