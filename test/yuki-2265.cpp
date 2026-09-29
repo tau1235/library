@@ -25,7 +25,7 @@ int main(){
     if (t==1){
       int x,y;
       cin>>x>>y;
-      seg.set(x,S{y,1});
+      seg.set(x,S{y,11,2});
     }
     if (t==2){
       int l,r,x;
