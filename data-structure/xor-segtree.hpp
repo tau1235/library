@@ -57,7 +57,10 @@ struct XorSegmentTree{
     S p=e();
     return max_right<g>(root,0,1LL<<log,l,0,p);
   }
-  void operate_xor(ll x){xorval^=x;}
+  void operate_xor(ll x){
+    assert(0<=x&&x<1LL<<log);
+    xorval^=x;
+  }
 private:
   Node* newNode(){
     assert(pid<NODES);
