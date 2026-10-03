@@ -34,8 +34,8 @@ private:
     int l=p<<h;
     int hl=1<<(h-1);
     for (int i=0;i<1<<(h-1);i++){
-      table[h][l+i]=op(table[h-1][l+i],table[h-1][l+hl+i]);
-      table[h][l+hl+i]=op(table[h-1][l+hl+i],table[h-1][l+i]);
+      table[h][l+i]=op(table[h-1][l+i],table[h-1][l+(hl+i)]);
+      table[h][l+(hl+i)]=op(table[h-1][l+(hl+i)],table[h-1][l+i]);
     }
   }
   S prod(int l,int r,int ql,int qr,int h){
