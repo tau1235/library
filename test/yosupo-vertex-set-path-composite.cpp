@@ -33,8 +33,8 @@ int main(){
   g.build();
   vector<S> v(n);
   for (int i=0;i<n;i++) v[g.in[i]]=ab[i];
-  SegTree<S,op1,e> seg1(v);
-  SegTree<S,op2,e> seg2(v);
+  Segtree<S,op1,e> seg1(v);
+  Segtree<S,op2,e> seg2(v);
   while (q--){
     int t;
     cin>>t;

@@ -13,7 +13,7 @@ ll e(){return 0LL;}
 int main(){
 	int n,q;
 	cin>>n>>q;
-	SegTree<ll,op,e> seg(n);
+	Segtree<ll,op,e> seg(n);
 	for (int i=0;i<n;i++){
 		int a;
 		cin>>a;

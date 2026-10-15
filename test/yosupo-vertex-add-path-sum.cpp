@@ -25,7 +25,7 @@ int main(){
   g.build();
   vector<ll> v(n);
   for (int i=0;i<n;i++) v[g.in[i]]=a[i];
-  SegTree<ll,op,e> seg(v);
+  Segtree<ll,op,e> seg(v);
   while (q--){
     int t;
     cin>>t;
