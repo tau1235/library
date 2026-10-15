@@ -1,19 +1,18 @@
 #pragma once
 
 template<typename S,S (*op)(S,S),S (*e)()>
-struct SegTree{
+struct Segtree{
   int n;
   int sz;
   vector<S> node;
-  SegTree(int n){*this=SegTree<S,op,e>(vector<S>(n,e()));}
-  SegTree(vector<S> v){
+  Segtree(int n){*this=Segtree<S,op,e>(vector<S>(n,e()));}
+  Segtree(vector<S> v){
     sz=v.size();
     n=1; while (n<sz) n*=2;
     node.assign(2*n,e());
     for (int i=0;i<sz;i++) node[i+n]=v[i];
     for (int i=n-1;i>=1;i--) node[i]=op(node[2*i],node[2*i+1]);
   }
-
   void set(int x,S val){
     x+=n;
     node[x]=val;
@@ -22,12 +21,10 @@ struct SegTree{
       node[x]=op(node[x*2],node[x*2+1]);
     }
   }
-  
   S get(int x){
     x+=n;
     return node[x];
   }
-
   S prod(int l,int r){
     assert(0<=l&&l<=r&&r<=sz);
     l+=n;r+=n;
@@ -39,7 +36,6 @@ struct SegTree{
     }
     return op(vl,vr);
   }
-
   template<bool (*f)(S)>
   int max_right(int l=0){
     if (l==sz) return sz;
